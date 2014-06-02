@@ -12,6 +12,7 @@
 
 @property (nonatomic) int uid;
 @property (nonatomic, strong) NSString *subject;
+@property (nonatomic, strong) NSString *detail;
 
 -(id)initWithJSON:(NSDictionary *)json;
 

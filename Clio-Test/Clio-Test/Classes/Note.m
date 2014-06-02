@@ -14,6 +14,7 @@
     if ((self = [super init])) {
         self.uid = [[json objectForKey:@"id"] intValue];
         self.subject = [json objectForKey:@"subject"];
+        self.detail = [json objectForKey:@"detail"];
     }
     return self;
 }

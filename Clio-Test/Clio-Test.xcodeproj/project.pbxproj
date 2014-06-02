@@ -34,6 +34,8 @@
 		27B51421193D2814008C68C5 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B5141F193D2814008C68C5 /* NotesViewController.m */; };
 		27B51422193D2814008C68C5 /* NotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B51420193D2814008C68C5 /* NotesViewController.xib */; };
 		27B51425193D2975008C68C5 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B51424193D2975008C68C5 /* Note.m */; };
+		27B51429193D3017008C68C5 /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B51427193D3017008C68C5 /* CreateNoteViewController.m */; };
+		27B5142A193D3017008C68C5 /* CreateNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B51428193D3017008C68C5 /* CreateNoteViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,9 @@
 		27B51420193D2814008C68C5 /* NotesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesViewController.xib; sourceTree = "<group>"; };
 		27B51423193D2975008C68C5 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = Classes/Note.h; sourceTree = "<group>"; };
 		27B51424193D2975008C68C5 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = Classes/Note.m; sourceTree = "<group>"; };
+		27B51426193D3017008C68C5 /* CreateNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteViewController.h; sourceTree = "<group>"; };
+		27B51427193D3017008C68C5 /* CreateNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
+		27B51428193D3017008C68C5 /* CreateNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateNoteViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +163,12 @@
 				27B513F6193D1A50008C68C5 /* MatterViewController.m */,
 				27B5141E193D2814008C68C5 /* NotesViewController.h */,
 				27B5141F193D2814008C68C5 /* NotesViewController.m */,
+				27B51426193D3017008C68C5 /* CreateNoteViewController.h */,
+				27B51427193D3017008C68C5 /* CreateNoteViewController.m */,
 				27B5141D193D2517008C68C5 /* Classes */,
 				27B513F7193D1A50008C68C5 /* MatterViewController.xib */,
 				27B51420193D2814008C68C5 /* NotesViewController.xib */,
+				27B51428193D3017008C68C5 /* CreateNoteViewController.xib */,
 				27B513D6193D196C008C68C5 /* Images.xcassets */,
 				27B513C5193D196C008C68C5 /* Supporting Files */,
 			);
@@ -312,6 +320,7 @@
 				27B513D7193D196C008C68C5 /* Images.xcassets in Resources */,
 				27B513F9193D1A50008C68C5 /* MatterViewController.xib in Resources */,
 				27B513C9193D196C008C68C5 /* InfoPlist.strings in Resources */,
+				27B5142A193D3017008C68C5 /* CreateNoteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +353,7 @@
 				27B51416193D1E8C008C68C5 /* AFURLSessionManager.m in Sources */,
 				27B5141C193D24C0008C68C5 /* Matter.m in Sources */,
 				27B513CB193D196C008C68C5 /* main.m in Sources */,
+				27B51429193D3017008C68C5 /* CreateNoteViewController.m in Sources */,
 				27B513F8193D1A50008C68C5 /* MatterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +551,7 @@
 				27B513EF193D196D008C68C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27B513F0193D196D008C68C5 /* Build configuration list for PBXNativeTarget "Clio-TestTests" */ = {
 			isa = XCConfigurationList;
@@ -549,6 +560,7 @@
 				27B513F2193D196D008C68C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
