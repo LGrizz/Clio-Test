@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "MatterViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    
     // Override point for customization after application launch.
+    
+    MatterViewController *matterViewController = [[MatterViewController alloc] initWithNibName:@"MatterViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc]  initWithRootViewController:matterViewController];
+    self.window.rootViewController = nav;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							
