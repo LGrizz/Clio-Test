@@ -47,6 +47,7 @@
     NotesViewController *notesViewController = [[NotesViewController alloc] initWithNibName:@"NotesViewController" bundle:nil];
     notesViewController.matter = [matters objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:notesViewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
