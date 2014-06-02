@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Notes : NSObject
+@interface Note : NSObject
+
+@property (nonatomic) int uid;
+@property (nonatomic, strong) NSString *subject;
+
+-(id)initWithJSON:(NSDictionary *)json;
 
 @end

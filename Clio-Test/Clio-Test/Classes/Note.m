@@ -6,8 +6,16 @@
 //
 //
 
-#import "Notes.h"
+#import "Note.h"
 
-@implementation Notes
+@implementation Note
+
+- (id)initWithJSON:(NSDictionary *)json {
+    if ((self = [super init])) {
+        self.uid = [[json objectForKey:@"id"] intValue];
+        self.subject = [json objectForKey:@"subject"];
+    }
+    return self;
+}
 
 @end
