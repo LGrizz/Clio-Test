@@ -16,6 +16,8 @@
 
 @implementation NotesViewController{
     NSMutableArray *notes;
+    
+    IBOutlet UIView *errorView;
 }
 
 -(void)createNote:(CreateNoteViewController *)controller didCreateItem:(Note *)note{
@@ -70,6 +72,8 @@
     UIBarButtonItem *createNoteButton = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(createNote)];
     self.navigationItem.rightBarButtonItem = createNoteButton;
     
+    errorView.alpha = 0;
+    
     notes = [[NSMutableArray alloc] init];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -89,10 +93,27 @@
              }
              [self.tableView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"%@", error);
+             [UIView animateWithDuration:0.5
+                                   delay:1.0
+                                 options: UIViewAnimationOptionCurveEaseInOut
+                              animations:^{
+                                  errorView.alpha = 1;
+                              }
+                              completion:^(BOOL finished){
+                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3];
+                              }];
          }];
 }
 
+-(void)hideError{
+    [UIView animateWithDuration:0.5
+                          delay:1.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         errorView.alpha = 0;
+                     }
+                     completion:^(BOOL finished){}];
+}
 -(void)createNote{
     CreateNoteViewController *createNoteViewController = [[CreateNoteViewController alloc] initWithNibName:@"CreateNoteViewController" bundle:nil];
     createNoteViewController.delegate = self;

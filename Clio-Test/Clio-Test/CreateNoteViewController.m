@@ -16,6 +16,7 @@
 @implementation CreateNoteViewController{
     IBOutlet UITextField *detailTextField;
     IBOutlet UITextField *subjectTextField;
+    IBOutlet UIView *errorView;
 }
 
 @synthesize delegate;
@@ -37,7 +38,27 @@
              [self.navigationController popViewControllerAnimated:YES];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"%@", error);
+             
+             [UIView animateWithDuration:0.5
+                                   delay:1.0
+                                 options: UIViewAnimationOptionCurveEaseInOut
+                              animations:^{
+                                  errorView.alpha = 1;
+                              }
+                              completion:^(BOOL finished){
+                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3];
+                              }];
          }];
+}
+
+-(void)hideError{
+    [UIView animateWithDuration:0.5
+                          delay:1.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         errorView.alpha = 0;
+                     }
+                     completion:^(BOOL finished){}];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,6 +76,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Create Note";
+    errorView.alpha = 0;
 }
 
 - (void)didReceiveMemoryWarning

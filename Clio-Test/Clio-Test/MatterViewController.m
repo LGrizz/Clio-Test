@@ -16,6 +16,8 @@
 
 @implementation MatterViewController{
     NSMutableArray *matters;
+    
+    IBOutlet UIView *errorView;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -65,6 +67,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Matters";
+    errorView.alpha = 0;
     
     matters = [[NSMutableArray alloc] init];
     
@@ -85,10 +88,27 @@
              }
              [self.tableView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"%@", error);
+             [UIView animateWithDuration:0.5
+                                   delay:1.0
+                                 options: UIViewAnimationOptionCurveEaseInOut
+                              animations:^{
+                                  errorView.alpha = 1;
+                              }
+                              completion:^(BOOL finished){
+                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3];
+                              }];
          }];
 }
 
+-(void)hideError{
+    [UIView animateWithDuration:0.5
+                          delay:1.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         errorView.alpha = 0;
+                     }
+                     completion:^(BOOL finished){}];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
