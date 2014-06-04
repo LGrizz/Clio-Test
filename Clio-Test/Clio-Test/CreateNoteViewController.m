@@ -7,12 +7,38 @@
 //
 
 #import "CreateNoteViewController.h"
+#import "Note.h"
 
 @interface CreateNoteViewController ()
 
 @end
 
-@implementation CreateNoteViewController
+@implementation CreateNoteViewController{
+    IBOutlet UITextField *detailTextField;
+    IBOutlet UITextField *subjectTextField;
+}
+
+@synthesize delegate;
+
+-(IBAction)createNote:(id)sender{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    NSString *authHeader = @"Bearer Xzd7LAtiZZ6HBBjx0DVRqalqN8yjvXgzY5qaD15a";
+    
+    [manager.requestSerializer setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    
+    NSDictionary *params = @{@"note": @{@"detail": detailTextField.text, @"subject": subjectTextField.text, @"regarding": @{@"type":@"Matter", @"id": [NSString stringWithFormat:@"%i", self.matter.uid]}}};
+    
+    [manager POST:@"https://app.goclio.com/api/v2/notes" parameters:params
+         success:^(AFHTTPRequestOperation *operation, id responseObject){
+             Note *note = [[Note alloc] initWithJSON:[responseObject objectForKey:@"note"]];
+             [self.delegate createNote:self didCreateItem:note];
+             
+             [self.navigationController popViewControllerAnimated:YES];
+         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"%@", error);
+         }];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +53,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"Create Note";
 }
 
 - (void)didReceiveMemoryWarning
