@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Matter.h"
+#import "CreateNoteViewController.h"
 
-@interface NotesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface NotesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateNoteViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) Matter *matter;

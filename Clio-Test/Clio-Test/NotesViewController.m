@@ -8,6 +8,7 @@
 
 #import "NotesViewController.h"
 #import "Note.h"
+#import "CreateNoteViewController.h"
 
 @interface NotesViewController ()
 
@@ -15,6 +16,11 @@
 
 @implementation NotesViewController{
     NSMutableArray *notes;
+}
+
+-(void)createNote:(CreateNoteViewController *)controller didCreateItem:(Note *)note{
+    [notes addObject:note];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -88,7 +94,10 @@
 }
 
 -(void)createNote{
-    NSLog(@"%@", @"Create Note");
+    CreateNoteViewController *createNoteViewController = [[CreateNoteViewController alloc] initWithNibName:@"CreateNoteViewController" bundle:nil];
+    createNoteViewController.delegate = self;
+    createNoteViewController.matter = self.matter;
+    [self.navigationController pushViewController:createNoteViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
