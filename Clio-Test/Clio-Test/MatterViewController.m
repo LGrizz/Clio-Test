@@ -89,14 +89,18 @@
              }
              [matterTableView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [UIView animateWithDuration:0.5
-                                   delay:0.0
-                                 options: UIViewAnimationOptionCurveEaseInOut
-                              animations:^{
-                                  errorView.alpha = 1;
-                              }
-                              completion:^(BOOL finished){}];
+             [self showError];
          }];
+}
+
+-(void)showError{
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         errorView.alpha = 1;
+                     }
+                     completion:^(BOOL finished){}];
 }
 
 - (void)didReceiveMemoryWarning

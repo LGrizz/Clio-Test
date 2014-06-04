@@ -24,17 +24,7 @@
 
 -(IBAction)createNote:(id)sender{
     if([subjectTextField.text isEqualToString:@""]){
-        errorLabel.text = @"Please provide a subject for the note";
-        
-        [UIView animateWithDuration:0.5
-                              delay:0.0
-                            options: UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             errorView.alpha = 1;
-                         }
-                         completion:^(BOOL finished){
-                             [self performSelector:@selector(hideError) withObject:nil afterDelay:3.0];
-                         }];
+        [self showError:@"Please provide a subject for the note"];
         return;
     }
     
@@ -55,16 +45,22 @@
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"%@", error);
              
-             [UIView animateWithDuration:0.5
-                                   delay:0.0
-                                 options: UIViewAnimationOptionCurveEaseInOut
-                              animations:^{
-                                  errorView.alpha = 1;
-                              }
-                              completion:^(BOOL finished){
-                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3.0];
-                              }];
+             [self showError:@"Error creating note"];
          }];
+}
+
+-(void)showError:(NSString *)error{
+    errorLabel.text = error;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         errorView.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         [self performSelector:@selector(hideError) withObject:nil afterDelay:3.0];
+                     }];
 }
 
 -(void)hideError{
@@ -74,9 +70,7 @@
                      animations:^{
                          errorView.alpha = 0;
                      }
-                     completion:^(BOOL finished){
-                         errorLabel.text = @"Error creating note";
-                     }];
+                     completion:^(BOOL finished){}];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
