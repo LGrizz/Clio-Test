@@ -40,20 +40,20 @@
              NSLog(@"%@", error);
              
              [UIView animateWithDuration:0.5
-                                   delay:1.0
+                                   delay:0.0
                                  options: UIViewAnimationOptionCurveEaseInOut
                               animations:^{
                                   errorView.alpha = 1;
                               }
                               completion:^(BOOL finished){
-                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3];
+                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3.0];
                               }];
          }];
 }
 
 -(void)hideError{
     [UIView animateWithDuration:0.5
-                          delay:1.0
+                          delay:0.0
                         options: UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          errorView.alpha = 0;
