@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotesViewController">
             <connections>
                 <outlet property="errorView" destination="gro-C5-zlb" id="wsG-Z2-CGC"/>
-                <outlet property="tableView" destination="0pO-fD-MIM" id="CfC-4e-lTY"/>
+                <outlet property="noteTableView" destination="0pO-fD-MIM" id="nmk-wu-1Km"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
