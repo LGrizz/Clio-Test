@@ -94,21 +94,10 @@
                               animations:^{
                                   errorView.alpha = 1;
                               }
-                              completion:^(BOOL finished){
-                                  [self performSelector:@selector(hideError) withObject:nil afterDelay:3.0];
-                              }];
+                              completion:^(BOOL finished){}];
          }];
 }
 
--(void)hideError{
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options: UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         errorView.alpha = 0;
-                     }
-                     completion:^(BOOL finished){}];
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
