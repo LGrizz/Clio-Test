@@ -17,11 +17,27 @@
     IBOutlet UITextField *detailTextField;
     IBOutlet UITextField *subjectTextField;
     IBOutlet UIView *errorView;
+    IBOutlet UILabel *errorLabel;
 }
 
 @synthesize delegate;
 
 -(IBAction)createNote:(id)sender{
+    if([subjectTextField.text isEqualToString:@""]){
+        errorLabel.text = @"Please provide a subject for the note";
+        
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options: UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             errorView.alpha = 1;
+                         }
+                         completion:^(BOOL finished){
+                             [self performSelector:@selector(hideError) withObject:nil afterDelay:3.0];
+                         }];
+        return;
+    }
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     NSString *authHeader = @"Bearer Xzd7LAtiZZ6HBBjx0DVRqalqN8yjvXgzY5qaD15a";
@@ -58,7 +74,9 @@
                      animations:^{
                          errorView.alpha = 0;
                      }
-                     completion:^(BOOL finished){}];
+                     completion:^(BOOL finished){
+                         errorLabel.text = @"Error creating note";
+                     }];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
