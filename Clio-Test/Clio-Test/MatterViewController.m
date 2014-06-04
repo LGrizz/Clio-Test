@@ -18,6 +18,7 @@
     NSMutableArray *matters;
     
     IBOutlet UIView *errorView;
+    IBOutlet UITableView *tableView;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -86,7 +87,7 @@
                  Matter *matter = [[Matter alloc] initWithJSON:matterJSON];
                  [matters addObject:matter];
              }
-             [self.tableView reloadData];
+             [tableView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              [UIView animateWithDuration:0.5
                                    delay:0.0

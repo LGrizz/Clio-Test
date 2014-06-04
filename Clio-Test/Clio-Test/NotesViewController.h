@@ -12,7 +12,6 @@
 
 @interface NotesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateNoteViewControllerDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) Matter *matter;
 
 @end

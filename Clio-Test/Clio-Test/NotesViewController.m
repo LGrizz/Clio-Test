@@ -17,12 +17,13 @@
 @implementation NotesViewController{
     NSMutableArray *notes;
     
+    IBOutlet UITableView *tableView;
     IBOutlet UIView *errorView;
 }
 
 -(void)createNote:(CreateNoteViewController *)controller didCreateItem:(Note *)note{
     [notes addObject:note];
-    [self.tableView reloadData];
+    [tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,7 +92,7 @@
                  Note *note = [[Note alloc] initWithJSON:noteJSON];
                  [notes addObject:note];
              }
-             [self.tableView reloadData];
+             [tableView reloadData];
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              [UIView animateWithDuration:0.5
                                    delay:0.0
